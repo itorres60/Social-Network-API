@@ -66,7 +66,7 @@ Use the following guidelines to set up your models and API routes:
 
 **User**
 
-* `username`
+<!-- * `username`
     * String
     * Unique
     * Required
@@ -82,7 +82,7 @@ Use the following guidelines to set up your models and API routes:
     * Array of `_id` values referencing the `Thought` model
 
 * `friends`
-    * Array of `_id` values referencing the `User` model (self-reference)
+    * Array of `_id` values referencing the `User` model (self-reference) -->
 
 **Schema Settings**
 
@@ -92,7 +92,7 @@ Create a virtual called `friendCount` that retrieves the length of the user's `f
 
 **Thought**
 
-* `thoughtText`
+<!-- * `thoughtText`
     * String
     * Required
     * Must be between 1 and 280 characters
@@ -107,7 +107,7 @@ Create a virtual called `friendCount` that retrieves the length of the user's `f
     * Required
 
 * `reactions` (like replies)
-    * Array of nested documents created with the `reactionSchema`
+    * Array of nested documents created with the `reactionSchema` -->
 
 **Schema Settings**
 
@@ -117,7 +117,7 @@ Create a virtual called `reactionCount` that retrieves the length of the thought
 
 **Reaction** (SCHEMA ONLY)
 
-* `reactionId`
+<!-- * `reactionId`
     * Use Mongoose's ObjectId data type
     * Default value is set to a new ObjectId
 
@@ -133,7 +133,7 @@ Create a virtual called `reactionCount` that retrieves the length of the thought
 * `createdAt`
     * Date
     * Set default value to the current timestamp
-    * Use a getter method to format the timestamp on query
+    * Use a getter method to format the timestamp on query -->
 
 **Schema Settings**
 
@@ -144,11 +144,11 @@ This will not be a model, but rather used as the `reaction` field's subdocument 
 
 **`/api/users`**
 
-* `GET` all users
+<!-- * `GET` all users
 
 * `GET` a single user by its `_id` and populated thought and friend data
 
-* `POST` a new user:
+* `POST` a new user: -->
 
 ```json
 // example data
@@ -157,10 +157,10 @@ This will not be a model, but rather used as the `reaction` field's subdocument 
   "email": "lernantino@gmail.com"
 }
 ```
-
+<!-- 
 * `PUT` to update a user by its `_id`
 
-* `DELETE` to remove user by its `_id`
+* `DELETE` to remove user by its `_id` -->
 
 **BONUS**: Remove a user's associated thoughts when deleted
 
@@ -168,9 +168,9 @@ This will not be a model, but rather used as the `reaction` field's subdocument 
 
 **`/api/users/:userId/friends/:friendId`**
 
-* `POST` to add a new friend to a user's friend list
+<!-- * `POST` to add a new friend to a user's friend list -->
 
-* `DELETE` to remove a friend from a user's friend list
+<!-- * `DELETE` to remove a friend from a user's friend list -->
 
 ---
 

@@ -16,5 +16,5 @@ In order to achieve the bonus functionality of deleting a user's thoughts upon d
 
 Here is a link to demonstration video
 
-[Social Network API demonstration video](https://itorres60.github.io/Super-disco/ "Social Network API demonstration video-disco")
+[Social Network API demonstration video](https://drive.google.com/file/d/1UDA8c_uWnxB3AgwOyTqgrpv69PijCsm6/view?usp=sharing "Social Network API demonstration video-disco")
  

@@ -21,6 +21,9 @@ router
   .route('/:thoughtId')
   .get(getThoughtById)
   .delete(deleteThought)
+
+router
+  .route('/update/:thoughtId')
   .put(updateThought)
   
 router

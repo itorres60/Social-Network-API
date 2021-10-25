@@ -99,7 +99,7 @@ const userController = {
           res.status(404).json({ message: 'No user found with that ID!' });
           return
         }
-        res.json({message: `${dbUserData.username} is now friends with ${dbUserData.friends[0].username}!`})
+        res.json({message: `${dbUserData.username} is now friends with ${dbUserData.friends.pop().username}!`})
       })
       .catch(err => {
         console.log(err)

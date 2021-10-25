@@ -53,13 +53,6 @@ const thoughtController = {
       body,
       { new: true, runValidators: true }
     )
-    .then(({ _id }) => {
-      return User.findOneAndUpdate(
-        { _id: params.userId },
-        { $set: { thoughts: _id } },
-        { new: true, runValidators: true }
-      )
-    })
     .then(dbThoughtData => {
       if (!dbThoughtData) {
         res.status(404).json({ message: 'No thought found with this ID!'});
@@ -102,16 +95,18 @@ const thoughtController = {
     .catch(err => res.json(err));
   },
   deleteReaction({ params }, res) {
+    console.log(params.reactionId)
     Thought.findOneAndUpdate(
-      { _id: params.thoughtId },
-      { $unset: { reactions: {reactionsId: params.reactionId} } }
+      { _id : params.thoughtId },
+      { $pull: {reactions: { _id: params.reactionId } } },
+      { $new: true }
     )
     .then(dbThoughtData => {
       if (!dbThoughtData) {
-      res.status(404).json({ message: 'Incorrect thought or reaction ID'});
+      res.status(404).json({ message: 'No reaction found by that ID'});
         return;
       }
-      res.json({ message: 'reaction has been removed' });
+      res.json({ message: 'Reaction has been removed' });
     })
     .catch(err => {
       console.log(err);

@@ -4,6 +4,11 @@ const { Thought, User } = require('../models');
 const thoughtController = {
   getThoughts(req, res) {
     Thought.find({})
+    .populate({
+      path: 'users',
+      select: '-__v'
+    })
+    .select('-__v')
     .then(dbThoughtData => res.json(dbThoughtData))
     .catch(err => {res.json(err)})
   },
@@ -35,7 +40,7 @@ const thoughtController = {
           res.status(404).json({ message: 'No User found with that ID!'});
           return;
         }
-        res.json(dbThoughtData);
+        res.json({message: 'The following thought has been created', dbThoughtData});
       })
       .catch(err => {
         console.log(err);
@@ -60,7 +65,7 @@ const thoughtController = {
         res.status(404).json({ message: 'No thought found with this ID!'});
         return
       }
-      res.json(dbThoughtData)
+      res.json({message: 'The following update has been applied', dbThoughtData})
     })
     .catch(err => {
       console.log(err)
@@ -92,7 +97,7 @@ const thoughtController = {
         res.status(404).json({ message: 'No thought found with this ID!'});
         return
       }
-      res.json(dbThoughtData)
+      res.json({message: 'The following reaction has been created', dbThoughtData})
     })
     .catch(err => res.json(err));
   },
@@ -112,6 +117,14 @@ const thoughtController = {
       console.log(err);
       res.json(err);
     });
+  },
+  deleteUserThought(thoughtId , res) {
+    console.log(thoughtId)
+    Thought.deleteOne(
+      { _id: thoughtId }
+    ).then(dbUserData => {
+      console.log(dbUserData)
+    })
   }
 }
 

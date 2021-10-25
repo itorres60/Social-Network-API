@@ -18,9 +18,6 @@ router
   .route('/:userId')
   .get(getUserById)
   .put(updateUser)
-  
-  router
-  .route('/:userId')
   .delete(deleteUser)
   
 router

@@ -191,7 +191,7 @@ This will not be a model, but rather used as the `reaction` field's subdocument 
 }
 ```
 
-* `PUT` to update a thought by its `_id`
+<!-- * `PUT` to update a thought by its `_id` -->
 
 <!-- * `DELETE` to remove a thought by its `_id` -->
 
